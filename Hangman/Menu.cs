@@ -31,7 +31,13 @@ namespace Hangman
 
                 Console.Write("Aktion: ");
 
-                int action = Convert.ToInt32(Console.Read());
+                //int action = Convert.ToInt32(Console.ReadLine());
+                string choice = Console.ReadLine();
+                int action;
+                bool check = false;
+                
+                check = Int32.TryParse(choice, out action); // Prüfen ob int möglich
+                
                 bool end = false;
 
                 switch (action)
