@@ -56,13 +56,13 @@ namespace Hangman
                 Console.Write("Buchstabe: ");
                 char character = Convert.ToChar(Console.ReadLine().ToLower());
 
-                bool foundCharacter = false;
+                bool foundCharacterInWord = false;
 
                 for (int i = 0; i < word.Length; i++)
                 {
                     if (word[i] == character)
                     {
-                        foundCharacter = true;
+                        foundCharacterInWord = true;
                         break;
                     }
                 }
@@ -70,7 +70,7 @@ namespace Hangman
                 string tempHiddenWord = hiddenWord;
                 hiddenWord = "";
 
-                if (foundCharacter)
+                if (foundCharacterInWord)
                 {
                     for (int i = 0; i < word.Length; i++)
                     {
