@@ -43,7 +43,7 @@ namespace Hangman
                 switch (action)
                 {
                     case 1:
-                        //StartGame();
+                        HangmanMethods.StartGame();
                         break;
 
                     case 2:
