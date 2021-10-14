@@ -6,7 +6,7 @@ namespace Hangman
     {
         static void Main(string[] args)
         {
-            MainMenu();
+            Menu.MainMenu();
         }
     }
 }
