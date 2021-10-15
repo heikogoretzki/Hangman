@@ -31,7 +31,7 @@ namespace Hangman
 
         static void GameLoop(string word)
         {
-            int lives = 6;
+            int lives = 10;
             string hiddenWord = "";
 
             for (int i = 0; i < word.Length; i++)
@@ -54,7 +54,12 @@ namespace Hangman
 
                 Console.WriteLine();
                 Console.Write("Buchstabe: ");
-                char character = Convert.ToChar(Console.ReadLine().ToLower());
+                // char character = Convert.ToChar(Console.ReadLine().ToLower());
+                string tempChar = Console.ReadLine().ToLower();
+                char character;
+                bool tempCheck;
+
+                tempCheck = char.TryParse(tempChar, out character);
 
                 bool foundCharacterInWord = false;
 
@@ -87,34 +92,35 @@ namespace Hangman
                             hiddenWord += '_';
                         }
                     }
+                    
 
                     if (hiddenWord == word)
                     {
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("G E W O N N E N !");
-                        Console.WriteLine("Das Word war: " + word);
+                        Console.WriteLine("Gewonnen!");
+                        Console.WriteLine("Das Wort war: " + word);
                         Console.ReadKey();
                         Console.ResetColor();
                         break;
                     }
+                }
+                else
+                {
+                    hiddenWord = tempHiddenWord;
+
+                    if (lives > 0)
+                    {
+                        lives -= 1;
+                    }
                     else
                     {
-                        hiddenWord = tempHiddenWord;
-
-                        if (lives > 0)
-                        {
-                            lives -= 1;
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("L O S E R !");
-                            Console.ReadKey();
-                            Console.ResetColor();
-                            break;
-                        }
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Game Over!");
+                        Console.ReadKey();
+                        Console.ResetColor();
+                        break;
                     }
                 }
             }
